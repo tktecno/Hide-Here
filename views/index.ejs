@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>HIDE HERE
+        <% if(user){ %>
+            <%= user.username %>! 
+        <% } %>
+    </title>
+
+    <style>
+        .hero_container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 1rem 2rem 1rem 2rem;
+        }
+        .hero_content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            padding-left: 2rem;
+            & p{
+                font-size: 1.6rem;
+            }
+
+        }
+        .hero_logo{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            & img{
+                width: 47rem;
+                display: block;
+            }
+            
+        }
+        .hero_btn{
+            display: flex;
+            height: 4rem;
+            margin-top: 2rem;
+            gap: 12rem;
+            & a{
+                background-color: rgba(80, 219, 70, 0.205);
+                width: 12rem;
+                height: 5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include("header") %>
+
+    <% if(!user){ %>
+        <div class="hero_container">
+            
+            <div class="hero_content">
+                <h1> Hide Here — keep the important stuff where you can actually find it.</h1>
+                <p>
+                    A simple, private place to store links, notes, todos, and any text you want to save quickly and retrieve later.
+                </p>
+                <div class="hero_btn">
+                    <a href="/login">login</a>
+                    <a href="/register">register</a>
+                </div>
+            </div>
+            
+            <div class="hero_logo">
+                <img src="hero.png" alt="">
+            </div>
+        </div>
+    <% }else{ %>
+        <%- include("dashboard") %>
+    <% } %>
+    </body>
+</html>

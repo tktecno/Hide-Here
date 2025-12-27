@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide Here</title>
+    
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 64.2%;
+        }
+        body{
+            background: #d8ecd48a;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .container{
+            width: 100%;
+            height: 7rem;
+            display: flex;
+            background: rgba(81, 219, 70, 0.1);
+            padding: 2rem 0 0 2rem;
+            gap: 10rem;
+            justify-content: center;
+        }
+
+        a:hover::after{
+            content: "";
+            width: 0;
+            border: 1px solid rgb(66, 96, 134);
+            animation: link .2s linear forwards;
+        }
+        @keyframes link {
+            100%{
+                width: 100%;
+            }
+        }
+
+        .logo{
+            & img{
+                width: 10rem;
+                height: 4rem;
+
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="logo">
+            <a href="/">
+                <img src="logo.png" alt="">
+            </a>
+        </div>
+        <div class="about">
+            <a href="/about">about</a>
+        </div>
+        <div class="blog">
+            <a href="/blog">blog</a>
+        </div>
+        <% if(user){ %>
+            <div class="logout">
+                <a href="/logout">logout</a>
+            </div>
+        <% }else{ %>
+
+            <div class="login">
+                <a href="/login">login</a>
+            </div>
+            
+            <div class="register">
+                <a href="/register">register</a>
+            </div>
+        <% } %>
+        
+    </section>
+</body>
+</html>
+

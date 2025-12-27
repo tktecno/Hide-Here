@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+    <style>
+        .blog_container {
+            padding: 4rem 0rem 0rem 10rem;
+            display: flex;
+            flex-direction: column;
+            top: 5rem;
+            position: relative;
+
+
+            & div {
+                margin-bottom: 3rem;
+                padding-left: 2rem;
+
+            }
+            & h1 {
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+            & p {
+                font-size: 1.6rem;
+                margin-bottom: 2rem;
+                background: rgba(81, 219, 70, 0.1);
+                padding: 1rem;
+                width: 94rem;
+            }
+        }
+
+        
+
+        
+        
+    </style>
+</head>
+
+<body>
+    <%- include("header") %>
+
+        <section class="blog_container">
+
+
+            <h1>blog</h1>
+            
+            <div>
+                <p>
+                    Welcome to the Hide Here Blog — a space where we share updates, productivity tips, and ideas on how
+                    to make the most of quick text storage.<br>
+                    Whether you’re a developer, student, or just someone who likes keeping things tidy, this is where we
+                    post thoughts and news to help you get more done with less clutter.
+                </p>
+            </div>
+            <h1>why we built HIDE HERE</h1>
+            <div>
+                <p>
+                    Keeping small bits of information safe shouldn’t be complicated. <br>
+                    We all save links in random chats, notes in multiple apps, and todos in our heads — and then forget
+                    them.<br>
+                    Hide Here was built to fix that: a simple, fast, text-only place to store what matters, whenever it
+                    pops into your head.<br>
+                    No distractions, no endless menus — just you and your notes.
+                </p>
+            </div>
+            <h1>Your Privacy Matters</h1>
+            <div>
+                <p>
+                    Your words, your data. <br>
+                    Everything you store in Hide Here stays private — we don’t read, sell, or analyze your notes. <br>
+                    You can choose to share specific items with unique links, but that’s always your choice. <br>
+                    We believe your digital memory should belong to you.
+                </p>
+            </div>
+            <h1>Upcoming features :</h1>
+                <div>
+
+                <p>
+                    Optional dark mode <br>
+
+                    Markdown support <br>
+
+                    Smart tags powered by AI (for quick organization) <br>
+
+                    Mobile app with offline sync <br>
+
+                    Stay tuned — or better yet, follow us here to get updates as we roll them out.
+                </p>
+            </div>
+        </section>
+</body>
+
+</html>

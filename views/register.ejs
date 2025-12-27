@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        .container_register {
+            width: 100%;
+            margin-top: 2rem;
+            padding: 4rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            background: rgba(81, 219, 70, 0.1);
+            border-radius: 7%;
+            width: 45rem;
+            aspect-ratio: 1;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 4rem;
+
+            & div {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        label {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        input {
+            font-size: 1.8rem;
+            padding: .7rem 7rem .7rem .7rem;
+        }
+
+        button {
+            width: 14rem;
+            margin-top: 4rem;
+            font-size: 2.4rem;
+            padding: .5rem;
+            letter-spacing: .4rem;
+        }
+
+        .error {
+            color: red;
+            font-size: 1.6rem;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("header") %>
+        <div class="container_register">
+            <form action="/register_submit" method="post">
+                <div class="name_div">
+
+                    <label for="username">full name</label>
+                    <input type="text" name="username" autocomplete="off" placeholder="full name"
+                        value="<%- username %>">
+                </div>
+                <div class="age_div">
+
+                    <label for="age">age</label>
+                    <input type="text" name="age" autocomplete="off" placeholder="age" value="<%- age %>">
+                </div>
+                <div class="email_div">
+
+                    <label for="email"> email </label>
+                    <input type="email" name="email" autocomplete="off" placeholder="email" value="<%- email %>">
+                </div>
+
+                <div class="user_password">
+                    <label for="password">password</label>
+                    <input type="text" name="password" placeholder="password">
+                </div>
+
+                <div class="errors">
+                <p class="error" > <%= error %> </p>
+                    
+                    <% if (zodErrors) { %>
+                        <% Object.entries(zodErrors).forEach(([field, value])=> { %>
+                            <% if (field==="_errors" ) return; %>
+
+                                <% value._errors.forEach(msg=> { %>
+                                    <p class="error">
+                                        <%= field %>: <%= msg %>
+                                    </p>
+                                <% }) %>
+                        <% }) %>
+                    <% } %>
+
+
+
+                </div>
+                <button type="submit">register</button>
+            </form>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        li {
+            list-style: none;
+        }
+
+        .dashboard_container {
+            /* border: 1px solid black; */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0 3rem 0;
+        }
+
+        .addbox {
+            /* border: 1px solid black; */
+            width: 70%;
+            display: grid;
+            padding-bottom: 2rem;
+            background: rgba(81, 219, 70, 0.1);
+            grid-template-columns: 1fr;
+            justify-items: center;
+            gap: 2rem;
+
+            & textarea {
+                width: 55rem;
+                resize: none;
+                background: rgba(80, 219, 70, 0.034);
+                padding: 1rem;
+                border: .5px solid black;
+                outline: none;
+            }
+
+            & textarea:focus {
+                outline: 1px solid black;
+            }
+        }
+
+        .subnav {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.6rem;
+            padding: 2rem 0 1rem 0;
+            background: rgba(137, 43, 226, 0.103);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            & #code {
+                font-size: 1.6rem;
+            }
+
+            & input {
+                font-size: 1.5rem;
+                padding: .3rem;
+                outline: .2px solid rgba(0, 0, 0, 0.671);
+                border: none;
+            }
+
+            & input:focus {
+                outline: .1px solid black;
+                border: none;
+            }
+
+            & button {
+                padding: .1rem .7rem .1rem .7rem;
+                font-size: 1.6rem;
+            }
+        }
+
+        .useritemlist {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .coloring {
+            /* border: 1px solid black; */
+            width: 70%;
+        }
+
+
+        /* odd rows */
+        .coloring .item-div:nth-child(odd) {
+            background: rgba(255, 0, 0, 0.13);
+        }
+
+        /* even rows */
+        .coloring .item-div:nth-child(even) {
+            background: rgba(108, 99, 228, 0.16);
+        }
+
+        .list-div {
+            height: 6rem;
+            width: 70%;
+
+            & .subnav {
+                gap: 4rem;
+            }
+
+            & a {
+                font-size: 2rem;
+                text-transform: lowercase;
+            }
+        }
+
+        .item-div {
+            border: 1px solid rgba(0, 0, 0, 0.315);
+            width: 100%;
+            height: 6rem;
+            margin: 1rem 0;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            justify-items: start;
+            padding: .75rem 1rem;
+            align-items: flex-start;
+            gap: 1rem;
+
+            & h1 {
+                margin: 0;
+            }
+        }
+
+        .icon {
+            display: flex;
+            margin-top: 1.5rem;
+
+            & i {
+                cursor: pointer;
+                font-size: 2rem;
+            }
+        }
+
+        .code {
+            font-size: 1.4rem;
+            color: #f7d418e5;
+            padding: .2rem 1rem;
+            background: #000000a8;
+            letter-spacing: 0.4rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="dashboard_container">
+
+        <form action="/add" method="post" class="addbox">
+
+            <div class="subnav">
+
+                <div class="selected_code">
+
+                    <select id="code" name="selected_code">
+                        <option value="text">Text</option>
+                        <option value="link">Link</option>
+                        <option value="snippet">Snippet</option>
+                        <option value="qourts">Qourts</option>
+                        <option value="password">Password</option>
+                    </select>
+                </div>
+                <div class="title">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" value="<%- title %>">
+                </div>
+                <div class="btn">
+                    <label for="btn"> </label>
+                    <button name="btn" type="submit">Hide</button>
+                </div>
+            </div>
+            <div class="usertext">
+
+                <label for="usertext"></label>
+                <textarea name="usertext" id="usertext" cols="30" rows="10"
+                    placeholder="textarea.."><%= usertext || '' %></textarea>
+            </div>
+
+        </form>
+
+    </section>
+
+    <section class="useritemlist">
+
+        <div class="list-div">
+            <ul class="subnav">
+                <li> <a href="/all"> ALL </a> </li>
+                <li> <a href="/text"> TEXT </a></li>
+                <li> <a href="/link"> LINK </a></li>
+                <li> <a href="/snippet"> SNIPPET </a></li>
+                <li> <a href="/qourts"> QOURTS </a></li>
+                <li> <a href="/password"> PASSWORD </a></li>
+            </ul>
+        </div>
+
+        <div class="coloring">
+
+            <% items.map((curr)=>{ %>
+                <div class="item-div">
+
+                    <div>
+                        <h1><%- curr.title %> <span class="code"><%- curr.code %></span></h1>
+                        <p class="copy-text"><%- curr.data %></p>
+                    </div>
+
+                    <div class="icon">
+                        <a href="javascript:void(0)" class="copy-btn">
+                            <i class="fa-regular fa-copy"></i>
+                        </a>
+
+                        <a target="<%= curr.code === "link" ? "_blank" : "" %>" href="<%= curr.code==="link" ? curr.data
+                                : '/' %>" ><i class="fa fa-external-link"></i>
+                        </a>
+
+                        <a href="/delete/<%- curr.id %>">
+                            <i class="fas fa-trash"> </i>
+                        </a>
+                    </div>
+
+                </div>
+                <% }) %>
+
+        </div>
+
+    </section>
+
+    <script>
+        document.querySelectorAll(".copy-btn").forEach(btn => {
+            btn.addEventListener("click", async (e) => {
+                const parent = e.target.closest(".item-div");
+                const text = parent.querySelector(".copy-text").textContent.trim();
+
+                try {
+                    await navigator.clipboard.writeText(text);
+                    console.log("Copied:", text);
+                } catch (err) {
+                    console.error("Copy failed:", err);
+                }
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

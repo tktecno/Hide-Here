@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        .about_container{
+            padding: 4rem 0rem 0rem 10rem;
+            display: flex;
+            flex-direction: column;
+            top: 5rem;
+            position: relative;
+            & div{
+                margin-bottom: 3rem;
+                padding-left: 2rem;
+            }
+        }
+        h1{
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+        p{
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            background: rgba(81, 219, 70, 0.1);
+            width: 65rem;
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <%- include("header") %>
+    <section class="about_container">
+        <h1>about :</h1>
+        <div class="about_div">
+            <p>Hide Here is a tiny, focused app built to help you store short pieces of text that matter<br> — links, quick to-dos, copy snippets, reminders, and anything else you want to hide in<br> a safe, easy-to-access spot. No noise, no complicated folders<br> — just fast text storage that gets out of your way and helps you get back to what matters.</p>
+        </div>
+
+        <h1>Why we built it :</h1>
+        <div class="why_built">
+            <p>
+                We noticed people using messy notes, long email threads, or dozens of browser tabs <br>to hold onto small but important bits of text. Hide Here gives you a clean, single place <br>to stash those things so they’re searchable, shareable (if you want), and available across devices.
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
